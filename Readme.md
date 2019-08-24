@@ -5,9 +5,9 @@ Convert a monolith application to microservice arquitecture
 # Installation
 
 Requirements:
-  1.1 Install Docker + Docker-compose
-  1.2 Install all required dependencies
-  1.3 Set the needed/desired env variables in the env.model file and rename it to '.env' to run
+  1. Install Docker + Docker-compose
+  1. Install all required dependencies
+  1. Set the needed/desired env variables in the env.model file and rename it to '.env' to run
 
 Procedure:
   1. Go to the 'udacity-c3-deployment directory
