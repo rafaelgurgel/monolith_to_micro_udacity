@@ -9,9 +9,14 @@ services:
         - backend-user
         - backend-feed     
   backend-user:
-    image: rafaelgurgel/udacity-restapi-user
+    build:
+      dockerfile: Dockerfile
+      context: ../../udacity-c3-restapi-user
     env_file: 
       - ../../.env
+    volumes:
+      - /usr/src/app/node_modules
+      - ../../udacity-c3-restapi-user:/usr/src/app    
     # environment:
     #   POSTGRESS_USERNAME: $POSTGRESS_USERNAME
     #   POSTGRESS_PASSWORD: $POSTGRESS_PASSWORD 
@@ -23,11 +28,15 @@ services:
     #   JWT_SECRET: $JWT_SECRET
     #   URL: "http://localhost:8100"
   backend-feed:
-    image: rafaelgurgel/udacity-restapi-feed
+    build:
+      dockerfile: Dockerfile
+      context: ../../udacity-c3-restapi-feed
     env_file: 
       - ../../.env
     volumes:
       - $HOME/.aws:/root/.aws
+      - /usr/src/app/node_modules
+      - ../../udacity-c3-restapi-feed:/usr/src/app  
     # environment:
     #   POSTGRESS_USERNAME: $POSTGRESS_USERNAME
     #   POSTGRESS_PASSWORD: $POSTGRESS_PASSWORD 
@@ -39,8 +48,13 @@ services:
     #   JWT_SECRET: $JWT_SECRET
     #   URL: "http://localhost:8100"
   frontend:
-    image: rafaelgurgel/udacity-frontend:local
+    build:
+      dockerfile: Dockerfile
+      context: ../../udacity-c3-frontend
     env_file: 
       - ../../.env
+    volumes:
+      - /usr/src/app/node_modules
+      - ../../udacity-c3-frontend:/usr/src/app  
     ports:
       - "8100:80"

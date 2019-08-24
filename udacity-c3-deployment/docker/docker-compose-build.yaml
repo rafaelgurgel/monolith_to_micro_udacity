@@ -3,16 +3,16 @@ services:
   reverseproxy:
     build:
       context: .
-    image: scheele/reverseproxy 
+    image: rafaelgurgel/udacity-reverseproxy:${SHA:-latest} 
   backend_user:
     build:
       context: ../../udacity-c3-restapi-user
-    image: scheele/udacity-restapi-user
+    image: rafaelgurgel/udacity-restapi-user:${SHA:-latest}
   backend_feed:
     build:
       context: ../../udacity-c3-restapi-feed  
-    image: scheele/udacity-restapi-feed
+    image: rafaelgurgel/udacity-restapi-feed:${SHA:-latest}
   frontend:
     build:
       context: ../../udacity-c3-frontend  
-    image: scheele/udacity-frontend:local
+    image: rafaelgurgel/udacity-frontend:${SHA:-latest}
